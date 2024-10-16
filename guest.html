@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Guest Register</h2>
+        <form id="registerForm" onsubmit="return validateForm()">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <input type="text" id="svvId" placeholder="SVV Id (Optional)">
+            <input type="email" id="email" placeholder="Email ID" required>
+            <div class="checkbox-container">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <input type="submit" value="Register">
+            <div id="error" class="error"></div>
+        </form>
+    </div>
+    
+
+    <script>
+        function validateForm() {
+            const svvId = document.getElementById('svvId').value;
+            const errorDiv = document.getElementById('error');
+
+            if (svvId && (svvId.length !== 10 || isNaN(svvId))) {
+                errorDiv.textContent = 'SVV Id must be a 10-digit number if provided.';
+                return false;
+            }
+
+            errorDiv.textContent = '';
+            return true;
+        }
+    </script>
+</body>
+</html>

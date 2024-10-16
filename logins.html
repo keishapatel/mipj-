@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT'S LOGIN</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>STUDENT'S LOGIN</h2>
+        <form id="loginForm" onsubmit="return validateEmail()">
+            <input type="text" id="email" placeholder="Email ID" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            <div id="error" class="error"></div>
+        </form>
+    </div>
+
+    <script>
+        function validateEmail() {
+            const emailField = document.getElementById('email');
+            const errorDiv = document.getElementById('error');
+            const email = emailField.value;
+
+            if (!email.endsWith('@somaiya.edu')) {
+                errorDiv.textContent = 'Email must end with @somaiya.edu';
+                return false;
+            }
+
+            errorDiv.textContent = '';
+            return true;
+        }
+    </script>
+</body>
+</html>
+
